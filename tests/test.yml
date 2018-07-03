@@ -8,7 +8,7 @@
 
     - name: Install virtualenv
       package:
-        name: virtualenv
+        name: python-setuptools
         state: present
 
   roles:
