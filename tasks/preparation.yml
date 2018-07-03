@@ -1,0 +1,18 @@
+---
+- name: Install required apt packages
+  apt:
+    name: "{{ item }}"
+    state: latest
+  with_items: "{{ rtd_packages }}"
+
+- name: Install required apt packages for pdf output
+  apt:
+    name: "{{ item }}"
+    state: latest
+  with_items: "{{ rtd_packages_pdf_output }}"
+  when: rtd_enable_pdf_output
+
+- name: Install pip
+  easy_install:
+    name: pip
+    state: latest

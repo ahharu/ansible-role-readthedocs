@@ -1,0 +1,4 @@
+---
+  - include: preparation.yml
+  - include: setup.yml
+  - include: startup.yml

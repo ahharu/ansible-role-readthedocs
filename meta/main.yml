@@ -1,0 +1,26 @@
+---
+galaxy_info:
+  author: solutionDrive GmbH
+  description: Install a Read the Docs server instance.
+  company: solutionDrive
+
+  license: MIT
+
+  min_ansible_version: 2.1
+
+  platforms:
+    - name: Ubuntu
+      versions:
+        - bionic
+        - xenial
+        - trusty
+    - name: Debian
+      versions:
+        - stretch
+        - jessie
+
+  galaxy_tags:
+    - web
+    - system
+
+dependencies: []
