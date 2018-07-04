@@ -43,7 +43,7 @@ rtd_public_host: "{{ nginx_public_host }}"
 rtd_public_port: "{{ nginx_public_port }}"
 
 
-rtd_api_username: solutionapi
-rtd_api_password: gf37donzchfojisen
+rtd_api_username: ''
+rtd_api_password: ''
 
 rtd_debug_mode: "True"
