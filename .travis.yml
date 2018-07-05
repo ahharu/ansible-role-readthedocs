@@ -5,6 +5,10 @@ env:
   - distro: ubuntu1804
   - distro: ubuntu1604
 
+matrix:
+  allow_failures:
+    - env: distro=ubuntu1804
+
 before_script:
   # Check for correct eof newlines
   - wget -O ${PWD}/tests/check-eof-newline.sh https://gist.github.com/sd-lueckel/fd262b2570c270bf8695ed6bdd388727/raw/
