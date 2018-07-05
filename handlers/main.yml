@@ -1,4 +1,4 @@
-----
+---
 - name: start readthedocs
   service:
     name: uwsgi.service
