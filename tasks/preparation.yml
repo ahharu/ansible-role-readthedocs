@@ -18,8 +18,3 @@
     state: latest
   with_items: "{{ rtd_packages_pdf_output }}"
   when: rtd_enable_pdf_output
-
-- name: Install pip
-  easy_install:
-    name: pip
-    state: latest
