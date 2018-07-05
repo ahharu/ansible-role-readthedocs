@@ -3,10 +3,16 @@
   git:
     repo: "https://github.com/rtfd/readthedocs.org.git"
     dest: "{{ rtd_installation_path }}"
+  register: rtd_repository_clone
+  notify:
+    - restart readthedocs
 
 - name: Install python requirements via pip
   pip:
     requirements: "{{ rtd_installation_path }}/requirements.txt"
+  when: rtd_repository_clone.changed
+  notify:
+    - restart readthedocs
 
 - name: Install sphinx documentation compiler
   pip:
@@ -29,11 +35,15 @@
   template:
     src: "local_settings.py.j2"
     dest: "{{ rtd_installation_path }}/readthedocs/settings/local_settings.py"
+  notify:
+    - restart readthedocs
 
 - name: Copy wsgi executable file
   template:
     src: "wsgi_prod.py"
     dest: "{{ rtd_installation_path }}/readthedocs/wsgi_prod.py"
+  notify:
+    - restart readthedocs
 
 - name: Run collectstatic
   command: python manage.py collectstatic --noinput --no-color
@@ -41,6 +51,7 @@
     chdir: "{{ rtd_installation_path }}"
   vars:
     DJANGO_SETTINGS_MODULE: readthedocs.settings.prod
+  when: rtd_repository_clone.changed
 
 - name: Set owner of installation directory to www-data
   file:
@@ -49,6 +60,7 @@
     owner: "www-data"
     group: "www-data"
     recurse: yes
+  when: rtd_repository_clone.changed
 
 - name: Install uwsgi as systemd service
   template:

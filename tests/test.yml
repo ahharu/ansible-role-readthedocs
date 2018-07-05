@@ -16,4 +16,5 @@
         state: present
 
   roles:
+    - geerlingguy.pip
     - role_under_test

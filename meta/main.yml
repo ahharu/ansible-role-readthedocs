@@ -14,14 +14,10 @@ galaxy_info:
       versions:
         - bionic
         - xenial
-        - trusty
-    - name: Debian
-      versions:
-        - stretch
-        - jessie
 
   galaxy_tags:
     - web
     - system
 
-dependencies: []
+dependencies:
+  - { role: geerlingguy.pip }
