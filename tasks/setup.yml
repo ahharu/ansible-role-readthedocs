@@ -60,6 +60,7 @@
     owner: "www-data"
     group: "www-data"
     recurse: yes
+  when: rtd_repository_clone.changed
 
 - name: Install uwsgi as systemd service
   template:
