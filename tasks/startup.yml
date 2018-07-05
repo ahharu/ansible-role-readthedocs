@@ -1,5 +1,0 @@
----
-- name: "Start the Read the Docs server"
-  service:
-    name: uwsgi.service
-    state: restarted
