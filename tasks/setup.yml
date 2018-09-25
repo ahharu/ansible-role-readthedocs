@@ -10,7 +10,7 @@
 - name: Install python requirements via pip
   pip:
     requirements: "{{ rtd_installation_path }}/requirements.txt"
-    extra_args: --user
+    virtualenv: "read_the_docs"
   when: rtd_repository_clone.changed
   notify:
     - restart readthedocs
@@ -18,17 +18,17 @@
 - name: Install sphinx documentation compiler
   pip:
     name: sphinx
-    extra_args: --user
+    virtualenv: "read_the_docs"
 
 - name: Install uwsgi for serving application
   pip:
     name: uwsgi
-    extra_args: --user
+    virtualenv: "read_the_docs"
 
 - name: Install mysql driver
   pip:
     name: MySQL-python
-    extra_args: --user
+    virtualenv: "read_the_docs"
 
 - name: Copy base configuration file
   template:
