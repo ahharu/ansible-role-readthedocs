@@ -2,11 +2,10 @@
 rtd_packages:
   - git
   - ca-certificates
-  - python-setuptools
+  - python3-setuptools
   - build-essential
-  - python-dev
+  - python3-dev
   - libevent-dev
-  - python2.7-dev
   - tk8.5
   - tcl8.5
   - tk8.5-dev

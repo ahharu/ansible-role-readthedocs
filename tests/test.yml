@@ -2,6 +2,8 @@
 - hosts: all
 
   vars:
+    pip_package: python3-pip
+
     rtd_api_username: 'readthedocsapi'
     rtd_api_password: 'security'
 
@@ -12,7 +14,7 @@
 
     - name: Install virtualenv
       package:
-        name: python-setuptools
+        name: python3-setuptools
         state: present
 
   roles:
