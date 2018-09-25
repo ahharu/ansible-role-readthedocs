@@ -19,16 +19,19 @@
   pip:
     name: sphinx
     virtualenv: "read_the_docs"
+    virtualenv_site_packages: yes
 
 - name: Install uwsgi for serving application
   pip:
     name: uwsgi
     virtualenv: "read_the_docs"
+    virtualenv_site_packages: yes
 
 - name: Install mysql driver
   pip:
     name: MySQL-python
     virtualenv: "read_the_docs"
+    virtualenv_site_packages: yes
 
 - name: Copy base configuration file
   template:
