@@ -18,3 +18,9 @@
     state: latest
   with_items: "{{ rtd_packages_pdf_output }}"
   when: rtd_enable_pdf_output
+
+- name: Install required pip packages for virtualenv
+  pip:
+    name: "{{ item }}"
+    extra_args: --user
+  with_items: "{{ rtd_virtualenv_packages }}"

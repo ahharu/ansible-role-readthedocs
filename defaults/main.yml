@@ -27,6 +27,9 @@ rtd_packages_pdf_output:
 
 rtd_enable_pdf_output: false
 
+rtd_virtualenv_packages:
+  - virtualenv
+
 rtd_installation_path: "/opt/readthedocs"
 
 nginx_public_host: ""
