@@ -3,7 +3,7 @@ Description=uWSGI application server
 After=syslog.target
 
 [Service]
-ExecStart=/usr/local/bin/uwsgi --chdir {{ rtd_installation_path }} --wsgi-file readthedocs/wsgi_prod.py --socket /tmp/uwsgi.sock --chmod-socket=644 --enable-threads --processes 4 --threads 2
+ExecStart={{ rtd_virtualenv_path }}/bin/uwsgi --chdir {{ rtd_installation_path }} --wsgi-file readthedocs/wsgi_prod.py --socket /tmp/uwsgi.sock --chmod-socket=644 --enable-threads --processes 4 --threads 2
 User=www-data
 Group=www-data
 RuntimeDirectory=uwsgi

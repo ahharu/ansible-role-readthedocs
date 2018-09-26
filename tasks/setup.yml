@@ -10,6 +10,7 @@
 - name: Install python requirements via pip
   pip:
     requirements: "{{ rtd_installation_path }}/requirements.txt"
+    virtualenv: "{{ rtd_installation_path }}/read_the_docs_virtualenv"
   when: rtd_repository_clone.changed
   notify:
     - restart readthedocs
@@ -17,14 +18,20 @@
 - name: Install sphinx documentation compiler
   pip:
     name: sphinx
+    virtualenv: "{{ rtd_virtualenv_path }}"
+    virtualenv_site_packages: yes
 
 - name: Install uwsgi for serving application
   pip:
     name: uwsgi
+    virtualenv: "{{ rtd_virtualenv_path }}"
+    virtualenv_site_packages: yes
 
 - name: Install mysql driver
   pip:
     name: MySQL-python
+    virtualenv: "{{ rtd_virtualenv_path }}"
+    virtualenv_site_packages: yes
 
 - name: Copy base configuration file
   template:
@@ -46,7 +53,7 @@
     - restart readthedocs
 
 - name: Run collectstatic
-  command: python manage.py collectstatic --noinput --no-color
+  command: "{{ rtd_virtualenv_path }}/bin/python manage.py collectstatic --noinput --no-color"
   args:
     chdir: "{{ rtd_installation_path }}"
   vars:
