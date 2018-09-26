@@ -32,6 +32,8 @@ rtd_virtualenv_packages:
 
 rtd_installation_path: "/opt/readthedocs"
 
+rtd_virtualenv_path: "{{ rtd_installation_path }}/read_the_docs_virtualenv"
+
 nginx_public_host: ""
 nginx_public_port: "80"
 

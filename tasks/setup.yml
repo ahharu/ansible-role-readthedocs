@@ -18,19 +18,19 @@
 - name: Install sphinx documentation compiler
   pip:
     name: sphinx
-    virtualenv: "{{ rtd_installation_path }}/read_the_docs_virtualenv"
+    virtualenv: "{{ rtd_virtualenv_path }}"
     virtualenv_site_packages: yes
 
 - name: Install uwsgi for serving application
   pip:
     name: uwsgi
-    virtualenv: "{{ rtd_installation_path }}/read_the_docs_virtualenv"
+    virtualenv: "{{ rtd_virtualenv_path }}"
     virtualenv_site_packages: yes
 
 - name: Install mysql driver
   pip:
     name: MySQL-python
-    virtualenv: "{{ rtd_installation_path }}/read_the_docs_virtualenv"
+    virtualenv: "{{ rtd_virtualenv_path }}"
     virtualenv_site_packages: yes
 
 - name: Copy base configuration file
@@ -53,7 +53,7 @@
     - restart readthedocs
 
 - name: Run collectstatic
-  command: python manage.py collectstatic --noinput --no-color
+  command: "{{ rtd_virtualenv_path }}/bin/python manage.py collectstatic --noinput --no-color"
   args:
     chdir: "{{ rtd_installation_path }}"
   vars:
