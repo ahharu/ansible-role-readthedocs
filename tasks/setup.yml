@@ -37,6 +37,10 @@
   template:
     src: "prod.py.j2"
     dest: "{{ rtd_installation_path }}/readthedocs/settings/prod.py"
+  notify:
+    - restart readthedocs
+  tags:
+    - configuration
 
 - name: Copy local configuration file
   template:
@@ -44,6 +48,8 @@
     dest: "{{ rtd_installation_path }}/readthedocs/settings/local_settings.py"
   notify:
     - restart readthedocs
+  tags:
+    - configuration
 
 - name: Copy wsgi executable file
   template:
